@@ -1,0 +1,355 @@
+<title>Reality Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;600&display=swap">
+
+<style>
+  :root {
+    --ink:        #14161b;
+    --ink-soft:   #3b414d;
+    --muted:      #6a7080;
+    --paper:      #f6f7f9;
+    --surface:    #ffffff;
+    --rule:       #dfe3e9;
+    --accent:     #b8620f;
+    --accent-dim: #8f4c0c;
+    --accent-wash:#f4e7d8;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body:    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --measure: 63ch;
+    --pad: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink:        #eceef2;
+      --ink-soft:   #c2c7d1;
+      --muted:      #8d94a3;
+      --paper:      #101217;
+      --surface:    #171a21;
+      --rule:       #2a2f39;
+      --accent:     #e2913f;
+      --accent-dim: #f0ab5f;
+      --accent-wash:#2a2118;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink:        #eceef2;
+    --ink-soft:   #c2c7d1;
+    --muted:      #8d94a3;
+    --paper:      #101217;
+    --surface:    #171a21;
+    --rule:       #2a2f39;
+    --accent:     #e2913f;
+    --accent-dim: #f0ab5f;
+    --accent-wash:#2a2118;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: var(--pad);
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.1rem;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.3rem, 6vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0 0 1.2rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .standfirst {
+    font-family: var(--display);
+    font-size: 1.22rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+    margin: 0 0 2.2rem;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 0.9rem;
+  }
+
+  h3 {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.005em;
+    margin: 0 0 0.35rem;
+  }
+
+  p { max-width: var(--measure); margin: 0 0 1.1rem; }
+
+  a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+  a:hover { color: var(--accent-dim); }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2.6rem;
+    margin-bottom: 2.6rem;
+  }
+
+  section { margin-bottom: 2.9rem; }
+
+  .rule-label {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.7rem;
+    margin-bottom: 1.4rem;
+  }
+  .rule-label span {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .artifacts {
+    display: grid;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .artifact {
+    background: var(--surface);
+    padding: 1.15rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.4rem 1rem;
+    align-items: start;
+  }
+
+  .artifact p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    grid-column: 1 / -1;
+    max-width: 54ch;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.16rem 0.44rem;
+    white-space: nowrap;
+    align-self: center;
+  }
+  .tag.live {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-wash);
+  }
+
+  ul.plain { list-style: none; padding: 0; margin: 0 0 1.1rem; max-width: var(--measure); }
+  ul.plain li {
+    position: relative;
+    padding-left: 1.35rem;
+    margin-bottom: 0.55rem;
+  }
+  ul.plain li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.72em;
+    width: 0.42rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.87em;
+    background: var(--accent-wash);
+    padding: 0.08em 0.32em;
+    border-radius: 2px;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+    margin-top: 3.2rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.6rem;
+    justify-content: space-between;
+  }
+  footer p { margin: 0; max-width: none; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: color 120ms ease; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Independent research &middot; Reasoning models</p>
+    <h1>Teaching small open models to <em>finish</em> hard problems.</h1>
+    <p class="standfirst">
+      Reality is a line of open reasoning models trained on olympiad-level competitive
+      programming. The work targets a specific failure: models that derive a correct
+      algorithm and then never commit it to working code.
+    </p>
+  </header>
+
+  <section>
+    <div class="rule-label"><span>The problem</span></div>
+    <p>
+      Large models are good at the hard part of an olympiad problem &mdash; finding the
+      algorithm. They are unreliable at the last mile. A model will reason its way to the
+      right recurrence, state the invariant correctly in prose, and then write code that
+      contradicts it. Or it will keep reasoning until it runs out of budget and submits
+      nothing at all.
+    </p>
+    <p>
+      That gap is not fixed by making the model larger. It shows up in the transition from
+      reasoning to output, and it is measurable: a submission either passes a judge's hidden
+      tests or it does not.
+    </p>
+  </section>
+
+  <section>
+    <div class="rule-label"><span>Approach</span></div>
+    <p>
+      Reality models are parameter-efficient adapters over open base models, trained in
+      three stages: distillation of verified reasoning traces, reinforcement learning
+      against real test-case outcomes, then a second distillation pass on hard, verified
+      solutions to encourage direct and committed answers.
+    </p>
+    <p>
+      The reward is not a preference score. A rollout is graded by executing it against a
+      strengthened hidden test suite, which makes the training signal falsifiable and makes
+      dataset quality the binding constraint on everything downstream.
+    </p>
+    <ul class="plain">
+      <li>Verified references, not model-generated answer keys</li>
+      <li>Test suites strengthened until they discriminate between plausible wrong solutions</li>
+      <li>Every artifact released open, including the failure analysis</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="rule-label"><span>Artifacts</span></div>
+    <div class="artifacts">
+
+      <div class="artifact">
+        <h3>Reality model line</h3>
+        <span class="tag live">Released</span>
+        <p>
+          An adapter for an open 27B base model, specialized for olympiad-style algorithmic
+          reasoning. Emits a full reasoning trace followed by a Python solution.
+          <a href="https://huggingface.co/trfrasdf/qwen3-32b-olympiad-cp">Weights on Hugging&nbsp;Face</a>.
+        </p>
+      </div>
+
+      <div class="artifact">
+        <h3>Verified problem corpus</h3>
+        <span class="tag live">Released</span>
+        <p>
+          1,005 competitive-programming problems rebuilt into verifiable reward data. Each
+          carries a reference solution checked against the original tests, plus a
+          regenerated suite of twelve adversarial cases built to separate correct
+          solutions from ones that merely look correct.
+        </p>
+      </div>
+
+      <div class="artifact">
+        <h3>cleanllm</h3>
+        <span class="tag live">Released</span>
+        <p>
+          A streaming cleaner for JSONL fine-tuning corpora &mdash; deduplication,
+          malformed-record handling, and filtering at dataset scale without loading the
+          file into memory. <a href="https://pypi.org/project/cleanllm/">Install from PyPI</a>.
+        </p>
+      </div>
+
+      <div class="artifact">
+        <h3>Failure-mode analysis</h3>
+        <span class="tag">Under review</span>
+        <p>
+          A paper documenting what the fine-tuning did and did not buy, including
+          reasoning-to-output failures, non-termination on hard problems, and the
+          decoding-temperature confound that makes such results easy to misreport.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="rule-label"><span>Current work</span></div>
+    <p>
+      Training models to use execution feedback. Given its own failing submission and the
+      exact judge verdict, a model should localize the fault and make a minimal correct
+      edit. In practice it usually rewrites from scratch, or repairs the speed of a solution
+      while quietly breaking its correctness. Closing that loop is the current line of work.
+    </p>
+  </section>
+
+  <footer>
+    <p>Aarav Verma &middot; independent researcher</p>
+    <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+  </footer>
+
+</div>
